@@ -1,0 +1,24 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'post_model.g.dart';
+
+@JsonSerializable()
+class PostModel {
+  final String userId;
+  final String id;
+  final String title;
+  final String body;
+
+  PostModel({
+    required this.userId,
+    required this.id,
+    required this.title,
+    required this.body,
+  });
+
+  factory PostModel.fromJson(Map<String, dynamic> json) =>
+      _$PostModelFromJson(json);
+  Map<String, dynamic> toJson() => _$PostModelToJson(this);
+}
