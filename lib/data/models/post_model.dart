@@ -6,8 +6,8 @@ part 'post_model.g.dart';
 
 @JsonSerializable()
 class PostModel {
-  final String userId;
-  final String id;
+  final int userId;
+  final int id;
   final String title;
   final String body;
 

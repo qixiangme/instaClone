@@ -24,7 +24,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home")),
+      appBar: AppBar(
+        title: Text("Home"),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.plus_one))],
+      ),
       body: Column(
         children: [
           // 스토리 추가

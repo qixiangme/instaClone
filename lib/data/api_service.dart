@@ -11,5 +11,8 @@ abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
   @GET("/posts/{id}")
-  Future<PostModel> getPost(@Path("id") int id);
+  Future<PostModel> getPosByIdt(@Path("id") int id);
+
+  @GET("/posts")
+  Future<List<PostModel>> getPost();
 }
