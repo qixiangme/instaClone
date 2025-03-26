@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mvvmclone/features/home/home_page.dart';
-import 'package:mvvmclone/features/post/post_provider.dart';
+import 'package:mvvmclone/features/post/post_view_model.dart';
+import 'package:mvvmclone/features/post/widgets/postTile.dart';
 
 class PostScreen extends ConsumerStatefulWidget {
   const PostScreen({super.key});
@@ -13,7 +14,7 @@ class PostScreen extends ConsumerStatefulWidget {
 class _PostScreenState extends ConsumerState<PostScreen> {
   @override
   Widget build(BuildContext context) {
-    final posts = ref.watch(postProvider);
+    final posts = ref.watch(postViewModelProvider);
 
     return Scaffold(
       body: posts.when(
@@ -22,15 +23,9 @@ class _PostScreenState extends ConsumerState<PostScreen> {
             itemCount: posts.length,
             itemBuilder: (context, index) {
               final post = posts[index];
-              print(post.title);
-              return ListTile(
-                title: Text(post.title, style: TextStyle(color: Colors.black)),
-                subtitle: Text(post.body),
-              );
+              return Posttile(userId: post.id, textcontext: post.title);
             },
           );
-
-          return null;
         },
         error: (err, stack) => Text("에러 $err"),
         loading: () => CircularProgressIndicator(),
