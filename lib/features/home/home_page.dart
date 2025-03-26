@@ -18,7 +18,6 @@ class _HomePageState extends State<HomePage> {
       icon: Icon(Icons.plus_one_rounded),
       label: 'Search',
     ),
-
     BottomNavigationBarItem(
       icon: Icon(Icons.notifications),
       label: 'Notifications',
@@ -27,20 +26,28 @@ class _HomePageState extends State<HomePage> {
   ];
 
   int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(title: Text("Home")),
-        body: Column(
-          children: [
-            StoryScreen(),
-            Flexible(child: pages[currentIndex]),
-            //페이지 추가T
-          ],
-        ),
-
-        // 네비게이션 바 추가
+        body:
+            currentIndex == 0
+                ? NestedScrollView(
+                  headerSliverBuilder: (
+                    BuildContext context,
+                    bool innerBoxIsScrolled,
+                  ) {
+                    return <Widget>[
+                      SliverToBoxAdapter(
+                        child: SizedBox(height: 100, child: StoryScreen()),
+                      ),
+                    ];
+                  },
+                  body: pages[currentIndex],
+                )
+                : null,
         bottomNavigationBar: BottomNavigationBar(
           showSelectedLabels: false,
           showUnselectedLabels: false,
@@ -49,10 +56,9 @@ class _HomePageState extends State<HomePage> {
           currentIndex: currentIndex,
           type: BottomNavigationBarType.fixed,
           onTap: (value) {
-            currentIndex = value;
-
-            setState(() {});
-            print("object");
+            setState(() {
+              currentIndex = value;
+            });
           },
         ),
       ),

@@ -20,6 +20,8 @@ class _PostScreenState extends ConsumerState<PostScreen> {
       body: posts.when(
         data: (posts) {
           return ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             itemCount: posts.length,
             itemBuilder: (context, index) {
               final post = posts[index];
