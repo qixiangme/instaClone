@@ -23,21 +23,29 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Home")),
-      body: Column(
-        children: [
-          // 스토리 추가
-          Flexible(child: pages[currentIndex]),
-          //페이지 추가
-        ],
-      ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(title: Text("Home")),
+        body: Column(
+          children: [
+            Flexible(child: pages[currentIndex]),
+            //페이지 추가T
+          ],
+        ),
 
-      // 네비게이션 바 추가
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        items: items,
-        onTap: print,
+        // 네비게이션 바 추가
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black,
+          items: items,
+          currentIndex: currentIndex,
+          type: BottomNavigationBarType.fixed,
+          onTap: (value) {
+            currentIndex = value;
+
+            setState(() {});
+            print("object");
+          },
+        ),
       ),
     );
   }
