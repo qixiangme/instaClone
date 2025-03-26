@@ -14,6 +14,11 @@ class _HomePageState extends State<HomePage> {
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
     BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
     BottomNavigationBarItem(
+      icon: Icon(Icons.plus_one_rounded),
+      label: 'Search',
+    ),
+
+    BottomNavigationBarItem(
       icon: Icon(Icons.notifications),
       label: 'Notifications',
     ),
@@ -35,7 +40,9 @@ class _HomePageState extends State<HomePage> {
 
         // 네비게이션 바 추가
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.black,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          backgroundColor: Colors.white,
           items: items,
           currentIndex: currentIndex,
           type: BottomNavigationBarType.fixed,
