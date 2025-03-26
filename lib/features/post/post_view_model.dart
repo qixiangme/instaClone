@@ -1,4 +1,3 @@
-import 'package:mvvmclone/core/provider.dart';
 import 'package:riverpod/riverpod.dart';
 
 import 'post_repository.dart';

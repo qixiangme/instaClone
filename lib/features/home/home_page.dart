@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvvmclone/features/story/story_screen.dart';
 import 'package:mvvmclone/pages_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,6 +34,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(title: Text("Home")),
         body: Column(
           children: [
+            StoryScreen(),
             Flexible(child: pages[currentIndex]),
             //페이지 추가T
           ],

@@ -1,4 +1,5 @@
 import 'package:mvvmclone/data/models/post_model.dart';
+import 'package:mvvmclone/data/models/story_model.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -14,4 +15,7 @@ abstract class ApiService {
   Future<PostModel> getPostById(@Path("id") int id);
   @GET("/posts")
   Future<List<PostModel>> getPost();
+
+  @GET("/photos")
+  Future<List<StoryModel>> getStory();
 }
