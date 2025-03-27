@@ -31,7 +31,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text("Home")),
         body:
             currentIndex == 0
                 ? NestedScrollView(
@@ -47,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   body: pages[currentIndex],
                 )
-                : null,
+                : pages[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           showSelectedLabels: false,
           showUnselectedLabels: false,
